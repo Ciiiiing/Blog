@@ -1,0 +1,44 @@
+<footer id="footer" class="footer bg-white">
+    <div class="footer-social">
+        <div class="footer-container clearfix">
+            <div class="social-list">
+                <a class="social" th:each="item : ${setting.siteLinks}" target="blank" th:href="${item.value}">[[${item.key}]]</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-meta">
+        <div class="footer-container">
+            <div class="meta-item meta-copyright">
+                <div class="meta-copyright-info">
+                    <p>[[${setting.siteName}]]</p>
+                    <div class="info-text">
+                        <p id="chakhsu"></p>
+                        <p>Theme is <a href="https://github.com/chakhsu/pinghsu" target="_blank">Pinghsu</a> by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+                        <p>Powered by <a href="http://www.typecho.org/" target="_blank" rel="nofollow">Typecho</a></p>
+                        <p style="margin-top: 10px">&copy; 2019 <a href="#">[[${setting.siteName}]]</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="meta-item meta-posts">
+                <h3 class="meta-title">最近文章</h3>
+                <li th:each="item : ${newArticle}">
+                    <a th:href="'/article/' + ${item.id}" th:text="${item.title}"></a>
+                </li>
+            </div>
+            <div class="meta-item meta-comments">
+                <h3 class="meta-title">最新评论</h3>
+                <li th:each="item : ${newComment}">
+                    <a th:if="${item.articleId != 0}" th:href="'/article/' + ${item.articleId}" th:text="${item.name} + ':  ' + ${item.content}"></a>
+                    <a th:if="${item.articleId == 0}" th:text="${item.author} + ':  ' + ${item.content}"></a>
+                </li>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="http://cdn.bootcss.com/headroom/0.9.1/headroom.min.js"></script>
+<script src="http://cdn.bootcss.com/highlight.js/9.10.0/highlight.min.js"></script>
+<script src="http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="http://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script data-th-src="@{/site/base.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>

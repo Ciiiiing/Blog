@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cing.blog.mapper.TbSettingMapper">
+  <resultMap id="BaseResultMap" type="com.cing.blog.model.TbSetting">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="site_name" jdbcType="VARCHAR" property="siteName" />
+    <result column="site_music" jdbcType="VARCHAR" property="siteMusic" />
+    <result column="site_links" jdbcType="LONGVARCHAR" property="siteLinks" />
+    <result column="about" jdbcType="LONGVARCHAR" property="about" />
+    <result column="about_md" jdbcType="LONGVARCHAR" property="aboutMd" />
+  </resultMap>
+</mapper>

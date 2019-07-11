@@ -1,0 +1,41 @@
+<div class="comment-container">
+    <div id="vcomments" class="v">
+        <form id="comment-form" class="comment-form" onsubmit="return vsubmit();">
+            <input th:if="${article ne null}" type="hidden" name="articleId" th:value="${article.id}"/>
+            <input th:if="${article ne null}" type="hidden" name="articleTitle" th:value="${article.title}"/>
+            <input type="text" name="name" maxlength="12"
+                   class="form-control input-control clearfix"
+                   placeholder="姓名 (*)" required="required"
+            />
+            <input type="email" name="email" class="form-control input-control clearfix"
+                   placeholder="邮箱 (*)" required="required"
+            />
+            <input type="url" name="url" class="form-control input-control clearfix"
+                   placeholder="网址 (http://)" required="required"
+            />
+            <textarea id="content" name="content" class="form-control" placeholder="以上信息可以为空,评论不能为空哦!"
+                      required="required" minlength="5"
+                      maxlength="2000"></textarea>
+            <button type="submit" class="submit">提交</button>
+        </form>
+        <div class="vinfo" style="display:block;">
+            <div class="vcount col"><span class="vnum">[[${count}]]</span> 评论</div>
+        </div>
+        <div class="vlist">
+            <div class="vcard" th:each="comment : ${talkList.rows}">
+                <img class="vimg" src="https://gravatar.loli.net/avatar/c9cab676d09b0a8350da651629dd62a4?d=mp&amp;v=1.3.4">
+                <div class="vh" th:id="'li-comment-' + ${comment.id}">
+                    <div class="vhead">
+                        <a class="vnick" rel="nofollow" th:href="${comment.url}" target="_blank" th:text="${comment.name}"></a></div>
+                    <div class="vmeta">
+                        <span class="vtime" th:text="${#dates.format(comment.time, 'yyyy-MM-dd')}"></span>
+                    </div>
+                    <div class="vcontent">
+                        <p th:text="${comment.content}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{/site/js/comments.js}"></script>
